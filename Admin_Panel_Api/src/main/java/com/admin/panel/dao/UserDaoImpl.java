@@ -74,6 +74,44 @@ public class UserDaoImpl implements UserDao{
 		return repository.save(user);
 	}
 
+//	Custom Find Methods
+	
+	@Override
+	public List<User> findByFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		return repository.findByFirstName(firstName);
+	}
+
+	@Override
+	public List<User> findByLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return repository.findByLastName(lastName);
+	}
+
+	@Override
+	public List<User> findByMobileNumber(String mobileNumber) {
+		// TODO Auto-generated method stub
+		return repository.findByMobileNumber(mobileNumber);
+	}
+
+	@Override
+	public List<User> findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return repository.findByEmail(email);
+	}
+
+	@Override
+	public List<User> findByCity(String city) {
+		// TODO Auto-generated method stub
+		return repository.findByCity(city);
+	}
+
+	@Override
+	public List<User> findByPincode(String pincode) {
+		// TODO Auto-generated method stub
+		return repository.findByPincode(pincode);
+	}
+
 	
 
 

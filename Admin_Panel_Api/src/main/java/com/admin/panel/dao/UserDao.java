@@ -10,6 +10,19 @@ public interface UserDao {
 	public List<User> findAllUser();
 	public User findUserById(int id);
 	
+//	Custom Find Methods
+	List<User> findByFirstName(String firstName);
+
+	List<User> findByLastName(String lastName);
+
+	List<User> findByMobileNumber(String mobileNumber);
+
+	List<User> findByEmail(String email);
+
+	List<User> findByCity(String city);
+
+	List<User> findByPincode(String pincode);
+	
 //	Created Methods
 	public User createUser(User user);
 	

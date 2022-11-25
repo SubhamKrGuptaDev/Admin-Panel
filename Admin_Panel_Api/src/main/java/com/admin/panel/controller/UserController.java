@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.admin.panel.entity.User;
 import com.admin.panel.service.UserService;
 import com.admin.panel.service.UserServiceImpl;
+import com.twilio.http.Response;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -87,8 +88,62 @@ public class UserController {
 		return ResponseEntity.ok(service.deleteUserById(id));
 	}
 	
-//	Searching APIs
+//	User Searching APIs
 	
+	@GetMapping("/firstname/{firstName}")
+	@Operation(summary = "Find User By First Name", tags = "Admin Operation") 
+	public ResponseEntity<?> findUserByFirstName(@PathVariable("firstName") String firstName) {
+		logger.info("========== Find By First Name Method Start ==========");
+		logger.info("inside findUserByFirstName() -> First Name : {}", firstName);
+		
+		List<User> list = service.findByFirstName(firstName);
+		
+		logger.info("========== Find By First Name Method End ==========");
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping("/lastname/{lastName}")
+	@Operation(summary = "Find User By Last Name", tags = "Admin Operation")
+	public ResponseEntity<?> findUserByLastName(@PathVariable("lastName") String lastName) {
+		
+		List<User> list = service.findByLastName(lastName);
+		
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping("/mobilenumber/{mobileNumber}")
+	@Operation(summary = "Find User By Mobile Number",tags = "Admin Operation")
+	public ResponseEntity<?> findUserByMobileNumber(@PathVariable("mobileNumber") String mobileNumber) {
+		return ResponseEntity.ok(service.findByMobileNumber(mobileNumber));
+	}
+	
+	
+	@GetMapping("/email/{email}")
+	@Operation(summary = "Find User By Email", tags = "Admin Operation")
+	public ResponseEntity<?> findUserByEmail(@PathVariable("email") String email) {
+		
+		List<User> list = service.findByEmail(email);
+		
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping("/city/{city}")
+	@Operation(summary = "Find User By City",tags = "Admin Operaton")
+	public ResponseEntity<?> findUserByCity(@PathVariable("city") String city) {
+		
+		List<User> list = service.findByCity(city);
+		
+		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping("/pincode/{pincode}")
+	@Operation(summary = "Find User By Pincode", tags = "Admin Operation")
+	public ResponseEntity<?> findUserByPincode(@PathVariable("pincode") String pincode) {
+		
+		List<User> list = service.findByPincode(pincode);
+		
+		return ResponseEntity.ok(list);
+	}
 	
 	
 //	Calculate Data 
@@ -96,6 +151,12 @@ public class UserController {
 	
 	
 }
+
+
+
+
+
+
 
 
 

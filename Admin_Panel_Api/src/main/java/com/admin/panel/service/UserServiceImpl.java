@@ -39,6 +39,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User createUser(User user) {
 		logger.info("inside createUser() -> User : {}",user);
+		
+		
+		
 		return dao.createUser(user);
 	}
 	
@@ -81,10 +84,50 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
+
+	
 	@Override
 	public List<User> listUserCreate(List<User> listUser) {
 		
 		return dao.listUserCreate(listUser);
+	}
+
+//	Custom Find Methods
+	
+	@Override
+	public List<User> findByFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		return dao.findByFirstName(firstName);
+	}
+
+	@Override
+	public List<User> findByLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return dao.findByLastName(lastName);
+	}
+
+	@Override
+	public List<User> findByMobileNumber(String mobileNumber) {
+		// TODO Auto-generated method stub
+		return dao.findByMobileNumber(mobileNumber);
+	}
+
+	@Override
+	public List<User> findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return dao.findByEmail(email);
+	}
+
+	@Override
+	public List<User> findByCity(String city) {
+		// TODO Auto-generated method stub
+		return dao.findByCity(city);
+	}
+
+	@Override
+	public List<User> findByPincode(String pincode) {
+		// TODO Auto-generated method stub
+		return dao.findByPincode(pincode);
 	}
 
 
