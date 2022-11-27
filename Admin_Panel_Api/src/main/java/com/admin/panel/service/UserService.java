@@ -1,8 +1,10 @@
 package com.admin.panel.service;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import com.admin.panel.entity.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public interface UserService {
 
@@ -37,4 +39,23 @@ public interface UserService {
 
 	public String deleteUserById(int id);
 
+	
+//	Calculate Methods
+	
+	public TreeMap<String, Integer> getPincodeCalculate(); // Pincode
+	
+	public TreeMap<String, Integer> getCityCalculate();	// City
+	
+	public TreeMap<String, List<String>> getCityWithPincode();	// City With Pincode 
+	
 }
+
+
+
+
+
+
+
+
+
+

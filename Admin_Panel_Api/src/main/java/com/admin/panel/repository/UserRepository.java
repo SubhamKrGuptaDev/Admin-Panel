@@ -21,6 +21,10 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	List<User> findByPincode(String pincode);
 	
+	
+//	Raw Query
+	
+	
 }
 
 

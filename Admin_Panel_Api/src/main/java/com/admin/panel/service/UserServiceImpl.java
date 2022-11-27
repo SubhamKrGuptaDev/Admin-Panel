@@ -1,6 +1,8 @@
 package com.admin.panel.service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.admin.panel.dao.UserDao;
 import com.admin.panel.entity.User;
-import com.admin.panel.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -39,8 +40,6 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User createUser(User user) {
 		logger.info("inside createUser() -> User : {}",user);
-		
-		
 		
 		return dao.createUser(user);
 	}
@@ -130,7 +129,58 @@ public class UserServiceImpl implements UserService{
 		return dao.findByPincode(pincode);
 	}
 
+//	Calculate methods 
+//	Pincode Calculate
+	@Override
+	public TreeMap<String, Integer> getPincodeCalculate() {
+		
+//		ObjectMapper mapper = new ObjectMapper();
+		
+		List<User> listOfUser = findAllUser();
+		
+		TreeMap<String, Integer> tm = new TreeMap<>();
+		
+		listOfUser.forEach((user) -> {
+			
+			tm.put(user.getPincode(), 
+					tm.getOrDefault(user.getPincode(), 0) + 1);
+			
+		});
+		
+		
+		return tm;
+	}
 
+//	City Calculate
+	@Override
+	public TreeMap<String, Integer> getCityCalculate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	City With Pincode
+	@Override
+	public TreeMap<String, List<String>> getCityWithPincode() {
+		List<User> listOfUser = findAllUser();
+		
+		TreeMap<String, List<String>> tm = new TreeMap<>();
+		
+		listOfUser.forEach((user) -> {
+			
+			if(tm.containsKey(user.getCity())) {
+				
+				List<String> temp = tm.get(user.getCity());
+				
+				tm.put(user.getCity(), Arrays.asList(user.getPincode()));	
+			}
+			else {
+				tm.put(user.getCity(), Arrays.asList(user.getPincode()));
+			}
+			
+		});
+		
+		return tm;
+	}
 	
 }
 

@@ -1,6 +1,7 @@
 package com.admin.panel.controller;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -147,7 +148,11 @@ public class UserController {
 	
 	
 //	Calculate Data 
-	
+	@GetMapping("/pincode/cal")
+	@Operation(summary = "For Pincode Calculate", tags = "User Calculate")
+	public ResponseEntity<Object> getPincodeCalculate() {
+		return ResponseEntity.ok(service.getPincodeCalculate());
+	}
 	
 	
 }
