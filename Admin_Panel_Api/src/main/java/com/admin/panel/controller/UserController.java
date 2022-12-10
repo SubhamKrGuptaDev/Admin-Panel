@@ -147,19 +147,59 @@ public class UserController {
 	}
 	
 	
-//	Calculate Data 
+//	Calculate Data
+//	Pincode Calculate
 	@GetMapping("/pincode/cal")
-	@Operation(summary = "For Pincode Calculate", tags = "User Calculate")
+	@Operation(summary = "find all pincode and count", tags = "User Calculate")
 	public ResponseEntity<Object> getPincodeCalculate() {
 		return ResponseEntity.ok(service.getPincodeCalculate());
 	}
 	
+	@GetMapping("/city/cal")
+	@Operation(summary = "find all city and count", tags = "User Calculate")
+	public ResponseEntity<Object> getCityCalculate() {
+		return ResponseEntity.ok(service.getCityCalculate());
+	}
+	
+	@GetMapping("/citywithpincode/cal")
+	@Operation(summary = "find all city and list of pincode", tags = "User Calculate")
+	public ResponseEntity<Object> getCityWithPincode() {
+		return ResponseEntity.ok(service.getCityWithPincode());
+	}
+	
+//	Comparator Methods
+	
+	@GetMapping("/getFirstNameSort")
+	@Operation(summary = "Sort Users with First Name", tags = "Sort Methods")
+	public ResponseEntity<List<User>> getAllUserWithFirstSort() {
+		return ResponseEntity.ok(service.getSortUserWithFirstName());
+	}
+	
+	@GetMapping("/getLastNameSort")
+	@Operation(summary = "Sort Users with Last Name", tags = "Sort Methods")
+	public ResponseEntity<List<User>> getAllUserWithLastSort() {
+		return ResponseEntity.ok(service.getSortUserWithLastName());
+	}
+	
+	@GetMapping("/getCitySort")
+	@Operation(summary = "Sort Users with City", tags = "Sort Methods")
+	public ResponseEntity<List<User>> getAllUserWithCity() {
+		return ResponseEntity.ok(service.getSortUserWIthCity());
+	}
+	
+	@GetMapping("/getPincodeDeSort")
+	@Operation(summary = "Desending Order Users with Pincode", tags = "Sort Methods")
+	public ResponseEntity<List<User>> getDesendingUserPincode() {
+		return ResponseEntity.ok(service.getDesendingUserPincode());
+	}
+	
+	@GetMapping("/getPincodeSort")
+	@Operation(summary = "Asending Order Users with Pincode", tags = "Sort Methods")
+	public ResponseEntity<List<User>> getSortUserPincode() {
+		return ResponseEntity.ok(service.getSortUserPincode());
+	}
 	
 }
-
-
-
-
 
 
 

@@ -48,6 +48,19 @@ public interface UserService {
 	
 	public TreeMap<String, List<String>> getCityWithPincode();	// City With Pincode 
 	
+	
+	
+	
+//	Comparator Class
+	public List<User> getSortUserWithFirstName();
+	
+	public List<User> getSortUserWithLastName();
+	
+	public List<User> getSortUserWIthCity();
+	
+	public List<User> getDesendingUserPincode();
+	public List<User> getSortUserPincode();
+	
 }
 
 
